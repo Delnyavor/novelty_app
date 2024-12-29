@@ -16,22 +16,24 @@ class _ThreadPage extends State<ThreadPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      // body:ThreadWidget(book: book)
+      body: list(),
     );
   }
 
   Widget list() {
     return Consumer<BookModel>(
-        builder: (BuildContext context, BookModel model, Widget? child) {
-      return GridView(
-          padding: const EdgeInsets.symmetric(horizontal: novPrimaryBodyMargin),
-          scrollDirection: Axis.horizontal,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
-            mainAxisSpacing: 30,
-            childAspectRatio: 2.5,
-          ),
-          children: model.books.map((e) => ThreadWidget(book: e)).toList());
-    });
+      builder: (BuildContext context, BookModel model, Widget? child) {
+        return GridView(
+            padding:
+                const EdgeInsets.symmetric(horizontal: novPrimaryBodyMargin),
+            scrollDirection: Axis.horizontal,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              mainAxisSpacing: 30,
+              childAspectRatio: 2.5,
+            ),
+            children: model.books.map((e) => ThreadWidget(book: e)).toList());
+      },
+    );
   }
 }

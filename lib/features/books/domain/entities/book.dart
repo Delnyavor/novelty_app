@@ -72,7 +72,7 @@ class Book {
       isbn: '',
       // rating: json['rating'] as double,
       rating: 0.0,
-      cover: json['cover_image'] as String,
+      cover: json['cover_image'],
       description: json['description'],
     );
   }

@@ -75,7 +75,7 @@ class BookRemoteDataSourceImpl extends BookRemoteDataSource {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       debugPrint(response.body);
       // return compute(_parseItems, response.body);
-      return compute(_parseItems, jsonEncode(booksData));
+      return compute(_parseItems, jsonEncode(response.body));
       // return [];
     } else {
       throw ServerException(message: parseApiError(response.body));
@@ -106,7 +106,7 @@ class BookRemoteDataSourceImpl extends BookRemoteDataSource {
   }
 
   @override
-  Future<Book?>? updateBook(Book Book) async {
+  Future<Book?>? updateBook(Book book) async {
     //   http.Response response = await httpClient.post(
     //       Uri.parse('www.example.com/'),
     //       headers: {'Content-Type': 'application/json'});
